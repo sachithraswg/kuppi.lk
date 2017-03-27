@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -9,21 +10,50 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>kuppi.lk</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/animate.min.css" rel="stylesheet"> 
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/lightbox.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
-  <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
-  <link href="css/responsive.css" rel="stylesheet">
-
+  <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCSS"/>
+  <spring:url value="/resources/css/main.css" var="mainCSS" />
+  <spring:url value="/resources/css/animate.min.css" var="animate" />
+  <spring:url value="/resources/css/font-awesome.min.css" var ="fontawesome" />
+  <spring:url value="/resources/css/lightbox.css" var="lightbox"/>
+  <spring:url value="/resources/css/responsive.css" var="responsive"/>
+  <spring:url value="/resources/css/presets/preset1.css" var="preset1"/>
+  <link href="${bootstrapCSS}" rel="stylesheet">
+  <link href="${mainCSS}" rel="stylesheet">
+  <link href="${animate}" rel="stylesheet"> 
+  <link href="${fontawesome}" rel="stylesheet">
+  <link href="${lightbox}" rel="stylesheet">
+  <link id="css-preset" href="${preset1}" rel="stylesheet">
+  <link href="${responsive}" rel="stylesheet">
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
   <![endif]-->
-  
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
-  <link rel="shortcut icon" href="images/favicon.ico">
+  <spring:url value="/resources/images/favicon.ico" var="favicon"/>
+  <link rel="shortcut icon" href="${favicon}">
+  
+  <spring:url value="/resources/js/jquery.js" var="jquesry" />
+  <spring:url value="/resources/js/bootstrap.min.js" var="bootstrap" />
+  <spring:url value="/resources/js/jquery.inview.min.js" var="jquesryinterview" />
+  <spring:url value="/resources/js/wow.min.js" var="wow" />
+  <spring:url value="/resources/js/mousescroll.js" var="mousescore" />
+  <spring:url value="/resources/js/smoothscroll.js" var="smoothscore"/>
+  <spring:url value="/resources/js/jquery.countTo.js" var="jquerycountto" />
+  <spring:url value="/resources/js/lightbox.min.js" var="lightbox" />
+  <spring:url value="/resources/js/main.js" var="mainjs" />
+  <script type="text/javascript" src="${jquesry}"></script>
+  <script type="text/javascript" src="${bootstrap}"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="${jquesryinterview}"></script>
+  <script type="text/javascript" src="${wow}"></script>
+  <script type="text/javascript" src="${mousescore}"></script>
+  <script type="text/javascript" src="${smoothscore}"></script>
+  <script type="text/javascript" src="${jquerycountto}"></script>
+  <script type="text/javascript" src="${lightbox}"></script>
+  <script type="text/javascript" src="${mainjs}"></script>
+  
+  
+  
 </head><!--/head-->
 
 <body>
@@ -35,31 +65,37 @@
   <header id="home">
     <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="item active" style="background-image: url(images/slider/1.jpg)">
+          <spring:url value="/resources/images/slider/1.jpg" var="first"/>
+        <div class="item active" style="background-image: url(${first})">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">Welcome to <span>kuppi</span></h1>
             <p class="animated fadeInRightBig">learn-teach</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a><br>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#myModal">Login</a>
           </div>
         </div>
-        <div class="item" style="background-image: url(images/slider/2.jpg)">
-          <div class="caption">
+        <spring:url value="/resources/images/slider/2.jpg" var="second" />
+        <div class="item" style="background-image: url(${second})">
+            <div class="caption" style="top: 35%">
             <h1 class="animated fadeInLeftBig">Never stop <span>learning</span></h1>
             <p class="animated fadeInRightBig">because we newer stop teaching</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a><br>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#myModal">Login</a>
           </div>
         </div>
-        <div class="item" style="background-image: url(images/slider/3.jpg)">
+        <spring:url value="/resources/images/slider/3.jpg" var="third" />
+        <div class="item" style="background-image: url(${third})">
           <div class="caption">
             <h1 class="animated fadeInLeftBig">you can <span>teach</span> others</h1>
             <p class="animated fadeInRightBig">in teaching others we teach ourselves.</p>
-            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a><br>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#myModal">Login</a>
           </div>
         </div>
       </div>
       <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
       <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
-
+      
       <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
 
     </div><!--/#home-slider-->
@@ -74,7 +110,8 @@
           </button>
           <a class="navbar-brand" href="#home">
               <div style="width: 60px">
-                <h1><img class="img-responsive" src="images/white.png" alt="logo"></h1>
+                  <spring:url value="/resources/images/white.png" var="white"/>
+                <h1><img class="img-responsive" src="${white}" alt="logo"></h1>
             </div>
           </a>                    
         </div>
@@ -375,6 +412,7 @@
     </div><!-- /#portfolio-single-wrap -->
   </section><!--/#portfolio-->
 
+  <%--
   <section id="team">
     <div class="container">
       <div class="row">
@@ -473,6 +511,7 @@
       </div>            
     </div>
   </section><!--/#team-->
+  --%>
 
   <section id="features" class="parallax">
     <div class="container">
@@ -500,7 +539,7 @@
       </div>
     </div>
   </section><!--/#features-->
-
+<%--
   <section id="pricing">
     <div class="container">
       <div class="row">
@@ -575,7 +614,8 @@
       </div>
     </div>
   </section><!--/#pricing-->
-
+--%>
+<%--
   <section id="twitter" class="parallax">
     <div>
       <a class="twitter-left-control" href="#twitter-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
@@ -605,7 +645,7 @@
       </div>
     </div>
   </section><!--/#twitter-->
-
+--%>
   <section id="blog">
     <div class="container">
       <div class="row">
@@ -704,7 +744,7 @@
   </section><!--/#blog-->
 
   <section id="contact">
-    <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div>
+   <!-- <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div> -->
     <div id="contact-us" class="parallax">
       <div class="container">
         <div class="row">
@@ -760,7 +800,8 @@
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
       <div class="container text-center">
         <div class="footer-logo">
-          <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
+            <spring:url value="/resources/images/white.png" var="white"/>
+            <a href="index.html"><img class="img-responsive" style="width: 100px" src="${white}" alt=""></a>
         </div>
         <div class="social-icons">
           <ul>
@@ -788,16 +829,107 @@
     </div>
   </footer>
 
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-  <script type="text/javascript" src="js/jquery.inview.min.js"></script>
-  <script type="text/javascript" src="js/wow.min.js"></script>
-  <script type="text/javascript" src="js/mousescroll.js"></script>
-  <script type="text/javascript" src="js/smoothscroll.js"></script>
-  <script type="text/javascript" src="js/jquery.countTo.js"></script>
-  <script type="text/javascript" src="js/lightbox.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-
+  
+  <--% login popup %-->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+      <div class="modal-dialog modal-lg" style="width: 50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    kuppi.lk</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8" style="width: 100%">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email1" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                                        <a href="javascript:;">Forgot your password?</a>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="Registration">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile" class="col-sm-2 control-label">
+                                        Mobile</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="mobile" placeholder="Mobile" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="password" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            Save & Continue</button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            Cancel</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
